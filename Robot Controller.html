@@ -13187,7 +13187,7 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>maze-id 1-1550502624
+<pre>maze-id 1-1550506083
 [[3, 2, 2, 2, 2, 2, 2, 2, 1],
  [0, 0, 2, 2, 2, 2, 2, 0, 0],
  [2, 0, 0, 2, 2, 2, 0, 0, 2],
@@ -13333,7 +13333,7 @@ div#notebook {
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>.
 ----------------------------------------------------------------------
-Ran 1 test in 0.001s
+Ran 1 test in 0.002s
 
 OK
 </pre>
@@ -13398,7 +13398,7 @@ OK
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>.
 ----------------------------------------------------------------------
-Ran 1 test in 0.003s
+Ran 1 test in 0.001s
 
 OK
 </pre>
@@ -13500,7 +13500,7 @@ OK
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>.
 ----------------------------------------------------------------------
-Ran 1 test in 0.001s
+Ran 1 test in 0.004s
 
 OK
 </pre>
@@ -13618,8 +13618,9 @@ OK
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>回答：1. 任务4中的env_data为读取的数据，任务5中的env_data为调取当前方法是自己定义的数据。在该方法以外该变量所占的内存及被释放。而任务4中的不会。</p>
+<p>回答：</p>
 <ol>
+<li>任务4中的env_data为全局变量，在整个程序中均可对其进行调用。任务5中的为局部变量，作用域为is_move_valid这个方法内。</li>
 <li>能改变，列表是可变类型变量。</li>
 </ol>
 
@@ -13689,7 +13690,7 @@ OK
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>.
 ----------------------------------------------------------------------
-Ran 1 test in 0.001s
+Ran 1 test in 0.002s
 
 OK
 </pre>
@@ -13798,10 +13799,11 @@ OK
 <span class="n">MAX</span> <span class="o">=</span> <span class="mi">300</span>
 <span class="k">def</span> <span class="nf">random_choose_actions</span><span class="p">(</span><span class="n">env_data</span><span class="p">,</span><span class="n">loc</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">MAX</span><span class="p">):</span>
+        
         <span class="n">action_list</span> <span class="o">=</span> <span class="n">valid_actions</span><span class="p">(</span><span class="n">env_data</span><span class="p">,</span><span class="n">loc</span><span class="p">)</span>
         <span class="n">action</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">action_list</span><span class="p">)</span>
-        
-        <span class="k">if</span> <span class="n">move_robot</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span><span class="n">action</span><span class="p">)</span> <span class="o">==</span><span class="n">loc_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;destination&#39;</span><span class="p">):</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">move_robot</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span><span class="n">action</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">loc</span> <span class="o">==</span><span class="n">loc_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;destination&#39;</span><span class="p">):</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;在第</span><span class="si">{}</span><span class="s1">个回合找到宝藏！&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
             <span class="k">break</span>
     
@@ -13822,6 +13824,24 @@ OK
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>在第182个回合找到宝藏！
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
